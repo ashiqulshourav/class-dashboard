@@ -264,6 +264,7 @@
                                         </div>
                                         <div class="d-item-content">
                                             <div id="chart4" class="chart4CustomScroll" ></div>
+                                            <div class="chart4-custom-scroll"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1033,12 +1034,7 @@
                 marginBottom: marginBottom,
                 scrollablePlotArea: {
                     minWidth: 600,
-                },
-                events: {
-      scroll: function () {
-        console.log('Hello scroll');
-      }
-    }
+                }
             },
             exporting:{
                 enabled: true,
@@ -1278,6 +1274,23 @@
         (function($){
             $(window).on("load",function(){
                 $(".d-pop-tabs-content").mCustomScrollbar();
+            });
+
+
+            // remove scroller
+            var element = jQuery('.chart4 .d-item-content');
+            var isDragging = false;
+
+            element.on('mousedown touchstart', function() {
+                element.find('.chart4-custom-scroll').addClass('active');
+                isDragging = true;
+            });
+
+            element.on('mouseup touchend', function() {
+                if (isDragging) {
+                    element.find('.chart4-custom-scroll').removeClass('active');
+                    isDragging = false;
+                }
             });
         })(jQuery);
     </script>

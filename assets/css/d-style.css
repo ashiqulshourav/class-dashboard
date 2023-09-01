@@ -896,6 +896,28 @@
 #chart4  .highcharts-xaxis {
     display: none;
 }
+.chart4 .d-item-content{
+    position: relative;
+}
 
+@media only screen and (max-width: 767px){    
+    .chart4-custom-scroll{
+        position: absolute;
+        right: 3px;
+        bottom: 4px;
+        width: 50%;
+        height: 3px;
+        border-radius: 2px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        -ms-border-radius: 2px;
+        -o-border-radius: 2px;
+        background-color: #F8C1C0;
+    }
 
+    .chart4-custom-scroll.active{
+        display: none;
+    }
+
+}
 /* Dashboard row css end */
