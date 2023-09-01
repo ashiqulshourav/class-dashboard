@@ -1288,8 +1288,10 @@
 
             element.on('mouseup touchend', function() {
                 if (isDragging) {
-                    element.find('.chart4-custom-scroll').removeClass('active');
-                    isDragging = false;
+                    setTimeout(()=>{
+                        element.find('.chart4-custom-scroll').removeClass('active');
+                        isDragging = false;
+                    }, 1000)
                 }
             });
         })(jQuery);
