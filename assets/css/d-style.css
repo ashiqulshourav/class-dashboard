@@ -147,7 +147,8 @@
     background-size: 14px 13px;
 }
 
-.d-h-dropdown select{
+.d-h-dropdown .d-h-select{
+    display: inline-block;
     padding: 8px 41px 8px 49px;
     border: 2px solid var(--red);
     border-radius: 30px;
@@ -158,10 +159,6 @@
     background-image: url(../images/d-arrow-down.svg),  url(../images/location.jpg);
     background-repeat: no-repeat;
     background-position: left 20px center, right 15px center;
-
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
     font-family: "Circular20SubHebMedium";
     font-size: 16px;
     font-weight: 400;
@@ -169,6 +166,7 @@
     color: var(--red);
     outline: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .d-tabs a{
@@ -233,7 +231,7 @@
     .d-header-inner .d-h-dropdown{
         width: 100%;
     }
-    .d-h-dropdown select{
+    .d-h-dropdown .d-h-select{
         border: none;
         padding-top: 0;
         padding-bottom: 0;
@@ -321,6 +319,8 @@
     --pLR: 10px;
     padding: 0 var(--pLR) var(--pb);
     position: relative;
+    text-decoration: none!important;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 767px){
@@ -377,7 +377,8 @@
 .d-item-h-btn{
     --color: var(--red);
     position: relative;
-    text-decoration: none;
+    text-decoration: none!important;
+    cursor: pointer;
 }
 
 .d-item-h-btn::after{
@@ -566,11 +567,11 @@
     width: 260px;
     padding: 22px;
     border: 2px solid #C4C4C4;
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
+    border-radius: 30px 30px 0 0;
+    -webkit-border-radius: 30px 30px 0 0;
+    -moz-border-radius: 30px 30px 0 0;
+    -ms-border-radius: 30px 30px 0 0;
+    -o-border-radius: 30px 30px 0 0;
     background-color: #ffffff;
     transition:0.3s all ease;
     -webkit-transition:0.3s all ease;
@@ -579,13 +580,13 @@
     -o-transition:0.3s all ease;
 }
 
-.pop-dropdown.active{
-    border-radius: 30px 30px 0 0;
-    -webkit-border-radius: 30px 30px 0 0;
-    -moz-border-radius: 30px 30px 0 0;
-    -ms-border-radius: 30px 30px 0 0;
-    -o-border-radius: 30px 30px 0 0;
+@media only screen and (min-width: 768px){
+    .pop-dropdown{
+        margin-top: -230px;
+    }
 }
+
+
 
 .pop-dropdown .d-h-dropdown-text{
     font-family: "Circular20SubHebBold";
@@ -596,12 +597,8 @@
     display: block;
     background-repeat: no-repeat;
     background-position: left center;
-    background-image: url(../images/d-arrow-down.svg);
-    cursor: pointer;
-}
-
-.pop-dropdown.active .d-h-dropdown-text{
     background-image: url(../images/d-arrow-up.svg);
+    cursor: pointer;
 }
 
 .pop-dropdown .d-h-dropdown-list-p{
@@ -623,9 +620,6 @@
     z-index: 1;    
     max-height: 260px;
     overflow: hidden;
-}
-
-.pop-dropdown.active .d-h-dropdown-list{
     margin-top: 21px;
     padding-bottom: 22px;
     border: 2px solid #C4C4C4;
@@ -634,10 +628,6 @@
 
 .d-h-dropdown-list ul{
     direction: rtl;
-}
-
-.pop-dropdown:not(.active) ul{
-    display: none;
 }
 
 .pop-dropdown li{
@@ -873,16 +863,39 @@
     background-color: #F8C1C0;
     width: 3px;
 }
+
+@media only screen and (max-width: 767px){
+    .d-pop-drp.active{
+        padding: 0;
+    }
+    .pop-dropdown.active{
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+    }
+    .pop-dropdown.active .d-h-dropdown-list{
+        max-height: calc(100vh - 66px);
+        border: none;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+    }
+    .pop-dropdown.active .d-h-dropdown-text{
+        background-image: url(../images/d-popup-close.svg);
+    }
+}
 /* Pop Dropdown css end */
 #chart4 .highcharts-tooltip text {direction: ltr;}
 #chart4  .highcharts-xaxis {
     display: none;
 }
 
-.chart4 .highcharts-scrolling{
-    height: auto;
-}
-
 
 /* Dashboard row css end */
-
