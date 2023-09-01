@@ -1,0 +1,1271 @@
+<!DOCTYPE HTML>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FC - DashBoard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+    <link type="text/css" href="d-reset.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/d-style.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="dashboard-wrap">
+            <div class="dashboard-inner">
+                 <div class="d-header">
+                    <div class="d-header-inner flex-wrap justify-between align-center">
+                        <div class="d-title">הדשבורד שלי <span class="d-title-btn"><img src="./assets/images/hamburger-menu.svg" alt=""></span></div>
+                        <div class="d-h-dropdown">
+                            <select name="d-h-select" id="dHSelect">
+                                <option value="mati">מטי - סניף מעלה אדומים</option>
+                                <option value="mati">מטי - סניף מעלה אדומים</option>
+                            </select>
+                        </div>
+                        <div class="d-h-dropdown pop-dropdown" style="display: none;">
+                            <div class="pop-dropdown-inner">
+                                <span class="d-h-dropdown-text">על מה תרצו להסתכל?</span>
+                                <div class="d-h-dropdown-list-p">
+                                    <div class="d-h-dropdown-list mCustomScrollbar">
+                                        <ul>
+                                            <li>מטי - כל הסניפים</li>
+                                            <li class="active">מטי - סניף מלחה</li>
+                                            <li>מטי - סניף מעלה אדומים</li>
+                                            <li>מטי - סניף קניון הדר</li>
+                                            <li>מטי - סניף רמות</li>
+                                            <li>מטי - סניף בית שמש</li>
+                                            <li>מטי - סניף מעלה אדומים</li>
+                                            <li>מטי - סניף קניון הדר</li>
+                                            <li>מטי - סניף רמות</li>
+                                            <li>מטי - סניף בית שמש</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            const dropdown = document.querySelector('.d-h-dropdown-text');
+                            const items = dropdown.parentElement.querySelectorAll('ul li');
+                            dropdown.addEventListener('click', function(){
+                                const parent = this.closest('.pop-dropdown');
+
+                                //remove selected class for all items
+                                if(!parent.classList.contains('active')){
+                                    parent.querySelectorAll('ul li').forEach((item)=>{
+                                        item.classList.remove('selected');
+                                    })
+                                };
+                                // add active class to the parent
+                                parent.classList.toggle('active');
+                            });
+
+                            // add selected & active class 
+                            items.forEach((item)=>{
+                                item.addEventListener('click', function(){
+                                    if(!item.classList.contains('selected')){
+                                        //remove active & selected class when item clicked
+                                        item.parentElement.querySelectorAll('li').forEach((item)=>{
+                                            item.classList.remove('active', 'selected');
+                                        })
+                                        // add active class on click
+                                        item.classList.add('active', 'selected');
+                                    }else{
+                                        item.classList.remove('active', 'selected');
+                                    }
+                                });
+                            });
+                        </script>
+                        <div class="d-mobile">
+                            <div class="d-tabs">
+                                <div class="d-tabs-inner flex-nowrap">
+                                    <a href="#" class="active">לקוחות</a>
+                                    <a href="#">שיווק</a>
+                                    <a href="#">מכירות</a>
+                                    <a href="#">כניסות</a>
+                                    <a href="#">כספים</a>
+                                    <a href="#">אפליקציה</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                  <!-- <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#" class="active">פעילים</a>
+                                        <a href="#">מוקפאים</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header flex justify-between">
+                                            <div class="d-item-h-title">מנויים</div>
+                                            <a class="d-item-h-btn" href="">הצג הכל</a>
+                                        </div>
+                                        <div class="d-item-content flex align-end justify-between">
+                                            <div class="d-num">5796</div>
+                                            <span class="d-growth up">12.9%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                 <div class="d-body">
+                    <div class="d-row">
+                        <div class="d-row-inner flex-wrap align-end">
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#" class="active">פעילים</a>
+                                        <a href="#">מוקפאים</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title">מנויים</div>
+                                        </div>
+                                        <div class="d-item-content flex align-end justify-between">
+                                            <div class="d-num">5796</div>
+                                            <span class="d-growth up">12.9%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title">מנויים פעילים <br>
+                                                בסוף חודש קודם</div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num">3901</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title">כרטיסיות פעילות</div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num">480</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#">יומי</a>
+                                        <a href="#" class="active">מתחילת החודש</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title">קבלות</div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num d-num-sm flex-nowrap justify-end flex-row-rev"><span>₪</span>15,183,091</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title">לידים פתוחים </div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num">13</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#" class="active">יומי</a>
+                                        <a href="#">מתחילת החודש</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title">כניסות </div>
+                                        </div>
+                                        <div class="d-item-content flex align-end justify-between">
+                                            <div class="d-num">198</div>
+                                            <span class="d-growth down">3%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#" class="active">יומי</a>
+                                        <a href="#">מתחילת החודש</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title">הרשמות </div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num flex flex-col">
+                                                <span>49 הגיעו</span>
+                                                256
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-row">
+                        <div class="d-row-inner flex-wrap">
+                            <div class="d-item d-chart">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#">יומי</a>
+                                        <a href="#" class="active">מתחילת החודש</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header flex justify-between align-start">
+                                            <div class="d-item-h-title flex flex-wrap flex-col">מתעניינים <span>(לפי מקור הגעה) </span></div>
+                                            <a class="d-item-h-btn" href="#item1">הצג הכל</a>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div id="chart1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item d-chart d-chart5">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#">יומי</a>
+                                        <a href="#" class="active">מתחילת החודש</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header flex justify-between align-start">
+                                            <div class="d-item-h-title flex flex-wrap flex-col">מכירות לפי מחלקות <span>(TOP 5) </span></div>
+                                            <a class="d-item-h-btn" href="#item2">הצג הכל</a>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div id="chart5"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item d-list">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#">יומי</a>
+                                        <a href="#" class="active">מתחילת החודש</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header flex justify-between align-start">
+                                            <div class="d-item-h-title">מכירות לפי אנשים</div>
+                                            <a class="d-item-h-btn" href="#item3">הצג הכל</a>
+                                        </div>
+                                        <div class="d-item-content d-star d-mt-50">
+                                            <ul>
+                                                <li>יואב ראובני <span>(29)</span></li>
+                                                <li>סיגל לוי <span>(26)</span></li>
+                                                <li>דורון אפט <span>(19)</span></li>
+                                                <li>אהוד קלה <span>(13)</span></li>
+                                                <li>חני בלום <span>(9)</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item d-list">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#" class="active">שיעורים</a>
+                                        <a href="#">מדריכים</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header flex justify-between align-start">
+                                            <div class="d-item-h-title">הכי פופולרים</div>
+                                            <a class="d-item-h-btn" href="#item4">הצג הכל</a>
+                                        </div>
+                                        <div class="d-item-content d-mt-50">
+                                            <ul>
+                                                <li>יוגה <span>(78 כניסות)</span></li>
+                                                <li>פילאטיס <span>(69 כניסות)</span></li>
+                                                <li>חיטוב <span>(58 כניסות)</span></li>
+                                                <li>ריקוד <span>(44 כניסות)</span></li>
+                                                <li>ספינינג <span>(21 כניסות)</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-row">
+                        <div class="d-row-inner flex-wrap align-start">
+                            <div class="d-item d-chart d-chart-large">
+                                <div class="d-item-inner d-mt-25">
+                                    <div class="d-item-body flex flex-col justify-between chart4">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title flex flex-wrap flex-col">תזרים חודשי - 2023 <span>(באלפי שקלים)</span></div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div id="chart4" class="chart4CustomScroll" ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner d-mt-25">
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title">חובות בקרב הלקוחות</div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num d-num-sm flex-nowrap justify-end flex-row-rev"><span>₪</span>31,091</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#" class="active">7 ימים </a>
+                                        <a href="#">14 ימים</a>
+                                        <a href="#">30 ימים</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title flex flex-wrap flex-col">לקוחות בסיכון <span>(בימים האחרונים)</span></div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num">8</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#" class="active">יומי </a>
+                                        <a href="#">עד סוף החודש</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title">מנויים העומדים <br> להסתיים</div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num">48</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-row">
+                        <div class="d-row-inner flex-wrap align-end">
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#" class="active">היום </a>
+                                        <a href="#">מתחילת החודש</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title"> בקשות ביטול</div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num">13</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#" class="active">היום </a>
+                                        <a href="#">מתחילת החודש</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title">מנויים מבוטלים</div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num">2</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header flex justify-between align-start">
+                                            <div class="d-item-h-title flex flex-wrap flex-col">משימות פתוחות <span>(ב-30 הימים האחרונים)</span></div>
+                                            <a class="d-item-h-btn" href="">למשימות </a>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num">7</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title">כמות כניסות <br> שנותרו למימוש</div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num">471</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title">נכנסו לאפליקציה</div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num">907</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item">
+                                <div class="d-item-inner">
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title flex-wrap flex-col mb-br-none">הרשמות לשיעורים <br>מהאפליקציה <span>(מתחילת החודש)</span> </div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div class="d-num">128</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-row">
+                        <div class="d-row-inner flex-wrap">
+                            <div class="d-item d-chart">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#" class="active">יומי</a>
+                                        <a href="#">מתחילת החודש</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title flex flex-wrap flex-col"> חדשים מול מחדשים <span>(מכירות) </span></div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div id="chart2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-item d-chart">
+                                <div class="d-item-inner">
+                                    <div class="d-item-tabs flex-nowrap">
+                                        <a href="#" class="active">יומי</a>
+                                        <a href="#">מתחילת החודש</a>
+                                    </div>
+                                    <div class="d-item-body flex flex-col justify-between">
+                                        <div class="d-item-body-header">
+                                            <div class="d-item-h-title flex flex-wrap flex-col">אונליין מול מועדון<span>(מכירות) </span></div>
+                                        </div>
+                                        <div class="d-item-content">
+                                            <div id="chart3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popups start -->
+    <div class="d-popup" id="item1">
+        <div class="d-popup-inner">
+            <div class="d-popup-header flex align-center flex-nowrap justify-between">
+                <h5> הכי פופלרים </h5>
+                <a href="#" class="close-popup"><img src="assets/images/d-popup-close.svg" alt=""></a>
+            </div>
+            <div class="d-popup-body">
+                <div class="d-popup-body-inner">
+                    <div class="d-pop-tabs flex flex-nowrap">
+                        <a href="#" class="active">שיעורים</a>
+                        <a href="#">מדריכים</a>
+                    </div>
+                    <div class="d-pop-tabs-contents">
+                        <div class="d-pop-tabs-content">
+                            <ul>
+                                <li>יוגה<span>109 כניסות</span></li>
+                                <li>פילאטיס<span>102 כניסות</span></li>
+                                <li>חיטוב<span>90 כניסות</span></li>
+                                <li>ריקוד<span>84 כניסות</span></li>
+                                <li>ספינינג<span>78 כניסות</span></li>
+                                <li>power<span>65 כניסות</span></li>
+                                <li>HIIT<span>64 כניסות</span></li>
+                                <li>פילאטיס מכשירים - מתקד...<span>59 כניסות</span></li>
+                                <li>ספינינג<span>53 כניסות</span></li>
+                                <li>ספינינג<span>51 כניסות</span></li>
+                                <li>ספינינג<span>49 כניבסות</span></li>
+                                <li>ספינינג<span>51 כניסות</span></li>
+                                <li>ספינינג<span>49 כניבסות</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="d-popup" id="item2">
+        <div class="d-popup-inner">
+            <div class="d-popup-header flex align-center flex-nowrap justify-between">
+                <h5>מכירות לפי אנשים</h5>
+                <a href="#" class="close-popup"><img src="assets/images/d-popup-close.svg" alt=""></a>
+            </div>
+            <div class="d-popup-body">
+                <div class="d-popup-body-inner">
+                    <div class="d-pop-tabs flex flex-nowrap">
+                        <a href="#" class="active">יומי</a>
+                        <a href="#">מתחילת החודש</a>
+                    </div>
+                    <div class="d-pop-tabs-contents">
+                        <div class="d-pop-tabs-content">
+                            <ul>
+                                <li>יואב ראובני <span>109 מכירות</span></li>
+                                <li>סיגל לוי <span>102 מכירות</span></li>
+                                <li>דורון אפט <span>90 מכירות</span></li>
+                                <li>אהוד קלה <span>84 מכירות</span></li>
+                                <li>חני בלום <span>78 מכירות</span></li>
+                                <li>יניב רדליך <span>65 מכירות</span></li>
+                                <li>דדי לוי <span>64 מכירות</span></li>
+                                <li>לירון לב <span>59 מכירות</span></li>
+                                <li>דנה שמיה <span>53 מכירות</span></li>
+                                <li>מורן גבע <span>51 מכירות</span></li>
+                                <li>אסי ג׳רבי <span>49 מכירות</span></li>                                
+                                <li>מורן גבע <span>51 מכירות</span></li>
+                                <li>אסי ג׳רבי <span>49 מכירות</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-popup" id="item3">
+        <div class="d-popup-inner">
+            <div class="d-popup-header flex align-center flex-nowrap justify-between">
+                <h5>מכירות לפי מחלקות</h5>
+                <a href="#" class="close-popup"><img src="assets/images/d-popup-close.svg" alt=""></a>
+            </div>
+            <div class="d-popup-body">
+                <div class="d-popup-body-inner">
+                    <div class="d-pop-tabs flex flex-nowrap">
+                        <a href="#" class="active">יומי</a>
+                        <a href="#">מתחילת החודש</a>
+                    </div>
+                    <div class="d-pop-tabs-contents">
+                        <div class="d-pop-tabs-content">
+                            <ul>
+                                <li>צוות מכירות ULTRA<span>109 מכירות</span></li>
+                                <li>תגבור חיצוני מוקד <span>102 מכירות</span></li>
+                                <li>צוות מיכל<span>90 מכירות</span></li>
+                                <li>צוות ארליך<span>84 מכירות</span></li>
+                                <li>צוות ארבל<span>78 מכירות</span></li>
+                                <li>שם הצוות<span>65 מכירות</span></li>
+                                <li>שם הצוות<span>64 מכירות</span></li>
+                                <li>שם הצוות<span>59 מכירות</span></li>
+                                <li>שם הצוות<span>53 מכירות</span></li>
+                                <li>שם הצוות<span>51 מכירות</span></li>
+                                <li>שם הצוות<span>49 מכירות</span></li>
+                                <li>שם הצוות<span>49 מכירות</span></li>
+                                <li>שם הצוות<span>49 מכירות</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="d-popup" id="item4">
+        <div class="d-popup-inner">
+            <div class="d-popup-header flex align-center flex-nowrap justify-between">
+                <h5> מתעניינים  <span>(לפי מקור הגעה)</span></h5>
+                <a href="#" class="close-popup"><img src="assets/images/d-popup-close.svg" alt=""></a>
+            </div>
+            <div class="d-popup-body">
+                <div class="d-popup-body-inner">
+                    <div class="d-pop-tabs flex flex-nowrap">
+                        <a href="#" class= "active">יומי</a>
+                        <a href="#">מתחילת החודש</a>
+                    </div>
+                    <div class="d-pop-tabs-contents">
+                        <div class="d-pop-tabs-content mCustomScrollbar">
+                            <ul>
+                                <li>פייסבוק<span>38%</span></li>
+                                <li>אינסטגרם<span>21%</span></li>
+                                <li>טיקטוק<span>17%</span></li>
+                                <li>טוויטר<span>12%</span></li>
+                                <li>טלפוני<span>5%</span></li>
+                                <li>קמפיין אימיילים<span>4%</span></li>
+                                <li>קמפיין פושים<span>4%</span></li>
+                                <li>מכירות שטח<span>3%</span></li>
+                                <li>מוקד<span>1%</span></li>
+                                <li>גוגל Ad<span>0.8%</span></li>
+                                <li>מקור הגעה אחר<span>0.2%</span></li>
+                                <li>גוגל Ad<span>0.8%</span></li>
+                                <li>מקור הגעה אחר<span>0.2%</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- remove popup -->
+    <script>
+        const popBtns = document.querySelectorAll('.d-item-h-btn');
+        const closeBtns = document.querySelectorAll('.close-popup');
+        popBtns.forEach((item)=>{
+            item.addEventListener('click', function(){
+                const id = item.getAttribute('href');
+                document.querySelector(id).classList.add('active');
+            })
+        });
+
+        closeBtns.forEach((item)=>{
+            item.addEventListener('click', ()=>{
+                item.closest('.d-popup').classList.remove('active');
+            })
+        });
+
+        document.addEventListener('click', function(e){
+            if(!e.target.closest('.d-popup-inner') && (!e.target.closest('.d-item-h-btn'))){
+                removePopup();
+            }
+        });
+
+        function removePopup(){
+            const popups = document.querySelectorAll('.d-popup');
+            popups.forEach((item)=>{
+                item.classList.remove('active');
+            })
+        }
+    </script>
+    <!-- Popups end -->
+
+    <!-- Charts CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script>
+        (()=>{
+            var align = "left";
+            var verticalAlign = "middle";
+            var height = 250;
+            var marginTop = 0;
+            var marginLeft = 180;
+
+            if ($(window).width() < 768) {
+                align = "right";
+                verticalAlign = "bottom";
+                height= 380;
+                marginTop= -130;
+            };
+            if ($(window).width() < 450) {
+                marginLeft = 120
+            };
+            // Create the chart
+            chart = new Highcharts.Chart({
+                chart: {
+                renderTo: 'chart1',
+                type: 'pie',
+                backgroundColor: null,
+                height: height,
+                marginLeft: marginLeft,
+                marginTop: marginTop,
+                marginBottom: 0,                
+                },
+                credits: {
+                    enabled: false,
+                },
+                title: {
+                text: null,
+                },
+                plotOptions: {
+                    pie: {
+                        shadow: false,
+                        allowPointSelect: true,
+                        borderWidth: 0,
+                        borderRadius: 0,
+                    },
+                    series: {
+                        states: {
+                            inactive: {
+                                opacity: 1
+                            }
+                        }
+                    },
+                },
+                tooltip: {
+                    headerFormat: null,
+                    "useHTML": true,
+                    pointFormat: '{point.y}% {point.name}',
+                    style: {
+                        "color": "#4F4F4F",
+                        "fontSize": "12px",
+                        "lineHeight": '15px',
+                    },
+                    shadow: {
+                        color: "rgba(0, 0, 0, 0.25)",
+                        offsetX: 0,
+                        offsetY: 2,
+                        spread: 2,
+                        blur: 2,
+                    },
+                    borderRadius: 16,
+                },
+                legend: {
+                    title:{
+                        text: "<strong>:TOP 5</strong>",
+                        style: {
+                            position: "center"
+                        },
+                    },
+                    align: align,
+                    verticalAlign: verticalAlign,
+                    layout: 'vertical', 
+                    symbolRadius: 0,
+                    rtl: true,
+                    itemStyle: {
+                        "color": "#4F4F4F",
+                        "cursor": "pointer",
+                        "fontSize": "12px",
+                        "lineHeight": '15px',
+                        "fontWeight": "bold",
+                    },
+                    x: -15,
+                },
+                colors: ['#FF4544', '#C4C4C4', '#000000', '#F8C1C0', '#E8E8E8'],
+                series: [{
+                        size: '197px',
+                        innerSize: '45%',
+                        showInLegend: true,
+                        colorByPoint: true,
+                        dataLabels: {
+                            enabled: false,
+                        },
+                        data: [
+                            ["פייסבוק (38%)", 38],
+                            ["אינסטגרם  (30%)", 30],
+                            ["גוגל (17%)", 17],
+                            ["טלפון (11%)", 11],
+                            ["אימייל (10%)", 10],
+                        ],
+                    }],
+                    
+            }); 
+        })();
+        (()=>{
+            var align = "left";
+            var verticalAlign = "middle";
+            var height = 250;
+            var marginTop = 0;
+            var marginLeft = 180;
+            var marginBottom = -10;
+            var layout = "vertical"
+
+            if ($(window).width() < 768) {
+                align = "right";
+                verticalAlign = "bottom";
+                height= 300;
+                marginTop= -50;
+                marginBottom =10;
+                layout = "horizontal"
+                marginLeft = 0;
+            };
+            // Create the chart
+            chart = new Highcharts.Chart({
+                chart: {
+                renderTo: 'chart2',
+                type: 'pie',
+                backgroundColor: null,
+                height: height,
+                marginLeft: marginLeft,
+                marginTop: marginTop,
+                marginBottom: marginBottom,                
+                },
+                credits: {
+                    enabled: false,
+                },
+                title: {
+                text: null,
+                },
+                plotOptions: {
+                    pie: {
+                        shadow: false,
+                        allowPointSelect: true,
+                        borderWidth: 0,
+                        borderRadius: 0,
+                    },
+                    series: {
+                        states: {
+                            inactive: {
+                                opacity: 1
+                            }
+                        }
+                    },
+                },
+                tooltip: {
+                    headerFormat: null,
+                    "useHTML": true,
+                    pointFormat: '{point.y}%  {point.name}',
+                    style: {
+                        "color": "#4F4F4F",
+                        "fontSize": "12px",
+                        "lineHeight": '15px',
+                    },
+                    shadow: {
+                        color: "rgba(0, 0, 0, 0.25)",
+                        offset: 0,
+                        spread: 2,
+                        blur: 2,
+                    },
+                    borderRadius: 16,
+
+                },
+                legend: {
+                    align: align,
+                    verticalAlign: verticalAlign,
+                    layout: layout, 
+                    symbolRadius: 0,
+                    rtl: true,
+                    itemStyle: {
+                        "color": "#4F4F4F",
+                        "cursor": "pointer",
+                        "fontSize": "12px",
+                        "lineHeight": '15px',
+                        "fontWeight": "bold",
+                    },
+                    x: -15,
+                },
+                colors: ['#00A699', '#80D1CB'],
+                series: [{
+                        size: '197px',
+                        innerSize: '45%',
+                        showInLegend: true,
+                        colorByPoint: true,
+                        dataLabels: {
+                            enabled: true,
+                            shadow: false,
+                            distance: '-30%',
+                            formatter: function() {
+                                return this.point.y + "%";
+                            },
+                            color: '#ffffff',
+                            style: {
+                                fontSize: 12,
+                                textOutline: "none",
+                            }
+                        },
+                        data: [
+                            ["חדשים (10)", 39],
+                            ["מחדשים (14)", 61],
+                        ],
+                    }],
+                    
+            }); 
+        })();
+        (()=>{
+            var align = "left";
+            var verticalAlign = "middle";
+            var height = 250;
+            var marginTop = 0;
+            var marginLeft = 180;
+            var marginBottom = -10;
+            var layout = "vertical";
+
+            if ($(window).width() < 768) {
+                align = "right";
+                verticalAlign = "bottom";
+                height= 300;
+                marginTop= -50;
+                marginBottom = 10;
+                layout = "horizontal";
+                marginLeft = 0;
+            }
+            // Create the chart
+            chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'chart3',
+                    type: 'pie',
+                    backgroundColor: null,
+                    height: height,
+                    marginLeft: marginLeft,
+                    marginTop: marginTop,
+                    marginBottom: marginBottom,                
+                },
+                credits: {
+                    enabled: false,
+                },
+                title: {
+                    text: null,
+                },
+                plotOptions: {
+                    pie: {
+                        shadow: false,
+                        allowPointSelect: true,
+                        borderWidth: 0,
+                        borderRadius: 0,
+                    },
+                    series: {
+                        states: {
+                            inactive: {
+                                opacity: 1
+                            }
+                        }
+                    },
+                },
+                tooltip: {
+                    headerFormat: null,
+                    "useHTML": true,
+                    pointFormat: '{point.y}% {point.name}',
+                    style: {
+                        "color": "#4F4F4F",
+                        "fontSize": "12px",
+                        "lineHeight": '15px',
+                    },
+                    shadow: {
+                        color: "rgba(0, 0, 0, 0.25)",
+                        offset: 0,
+                        spread: 2,
+                        blur: 2,
+                    },
+                    borderRadius: 16,
+                },
+                legend: {
+                    align: align,
+                    verticalAlign: verticalAlign,
+                    layout: layout, 
+                    symbolRadius: 0,
+                    rtl: true,
+                    itemStyle: {
+                        "color": "#4F4F4F",
+                        "cursor": "pointer",
+                        "fontSize": "12px",
+                        "lineHeight": '15px',
+                        "fontWeight": "bold",
+                    },
+                    x: -15,
+                },
+                colors: ['#F8C1C0', '#FF4544'],
+                series: [{
+                        size: '197px',
+                        innerSize: '45%',
+                        showInLegend: true,
+                        colorByPoint: true,
+                        dataLabels: {
+                            enabled: true,
+                            shadow: false,
+                            distance: '-30%',
+                            formatter: function() {
+                                return this.point.y + "%";
+                            },
+                            color: '#ffffff',
+                            style: {
+                                fontSize: 12,
+                                textOutline: "none",
+                            }
+                        },
+                        data: [
+                            ["אונליין (5)", 39],
+                            ["מועדון (7)", 61],
+                        ],
+                    }],
+                    
+            }); 
+        })();
+        (()=>{
+            var align = "left";
+            var verticalAlign = "top";
+            var height = 270;
+            var marginBottom = 30;
+
+            if ($(window).width() < 767) {
+                align = "right";
+                verticalAlign = "bottom";
+                height = 350;
+                marginBottom = 100;
+            };
+
+            Highcharts.chart('chart4', {
+            chart: {
+                type: 'column',
+                height: height,
+                backgroundColor: null,
+                marginTop: 60,
+                marginBottom: marginBottom,
+                scrollablePlotArea: {
+                    minWidth: 600,
+                },
+            },
+            scrollbar: {
+                alwaysVisible: true
+            },
+            exporting:{
+                enabled: true,
+            },
+            credits: {
+                enabled: false,
+            },
+            title: {
+                text: null,
+            },
+            xAxis: {
+                reversed: true,
+                categories: ['ינו׳', 'פבר׳', 'מרץ', 'אפר׳', 'מאי', 'יוני', 'יולי', 'אוג׳', 'ספט׳', 'אוק׳', 'נוב׳', 'דצמ׳'],
+                labels: {
+                    style: {
+                        color: '#4F4F4F', 
+                        fontSize: "12px",
+                        lineHeight: '15px',
+                        fontFamily: "Circular20WebHebBook",
+                    },
+                },
+            },
+            yAxis: {
+                opposite: true,
+                tickPositions: [0, 100, 250, 500, 750, 1000],
+                labels:{
+                    formatter: function() {
+                        let value = Number(this.axis.defaultLabelFormatter.call(this));
+                        if(value === 0){
+                            return ""
+                        } else if(value > 999){
+                            return this.axis.defaultLabelFormatter.call(this) / 1000 + "M"
+                        } else{
+                            return this.axis.defaultLabelFormatter.call(this)  + "K"
+                        }
+                    },
+                    style: {
+                        color: '#4F4F4F', 
+                        fontSize: "12px",
+                        lineHeight: '15px',
+                        fontFamily: "Circular20WebHebBook",                        
+                    },
+                },
+                title: {
+                    text: null,
+                },
+                stackLabels: {
+                    enabled: true,
+                    formatter: function () {
+                        return this.total + 'K';
+                    },
+                    style: {
+                        color: '#222222',
+                        fontSize: '12px',
+                        shadow: false,
+                    },
+                }
+            },
+            colors: ['#80D1CB', '#00A699'],
+            legend: {
+                align: align,
+                x: 0,
+                verticalAlign: verticalAlign,
+                y: -10,
+                overflow: 'hide',
+                floating: true,
+                borderWidth: 0,
+                shadow: false,
+                symbolRadius: 0,
+                    rtl: true,
+                    itemStyle: {
+                        "color": "#4F4F4F",
+                        "cursor": "pointer",
+                        "fontSize": "12px",
+                        "lineHeight": '15px',
+                        "fontWeight": "bold",
+                    },
+            },
+            tooltip: {
+                headerFormat: null,
+                "useHTML": true,
+                formatter: function() {
+                    return '<strong>' + this.point.stackTotal + 'K' + '</strong>' + ' 2023 ' + this.x + ' <br/> <br/>' + '<strong>' + this.point.y + 'K' + ' </strong>'+ this.series.name + '</br>';
+                },
+                style: {
+                    "color": "#4F4F4F",
+                    "fontSize": "12px",
+                    "lineHeight": '15px',
+                },
+                shadow: {
+                    color: "rgba(0, 0, 0, 0.25)",
+                    offset: 0,
+                    spread: 2,
+                    blur: 2,
+                },
+                borderRadius: 16,
+            },            
+            plotOptions: {
+                column: {
+                    stacking: 'normal',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    borderWidth: 0,
+                    borderRadius: 0,
+                },
+                series: {
+                    states: {
+                        inactive: {
+                            opacity: 1
+                        }
+                    }
+                },
+            },
+            series: [{
+                name: 'השאר',
+                data: [40, 53, 54, 48, 127, 150, 270, 295, 311, 148, 170, 322]
+            }, {
+                name: 'הוראת קבע',
+                data: [150, 150, 250, 250, 230, 230, 240, 250, 290, 450, 500, 350]
+            }]
+        });
+
+        })();
+        (()=>{
+            Highcharts.chart('chart5', {
+                chart: {
+                    type: 'bar',
+                    backgroundColor: null,
+                    height: 240,
+                },
+                credits: {
+                    enabled: false,
+                },
+                title: {
+                    text: null,
+                },
+                legend: {
+                    align: 'right',
+                    verticalAlign: 'bottom',
+                    y: 20,
+                    borderWidth: 0,
+                    shadow: false,
+                    symbolRadius: 0,
+                        rtl: true,
+                        itemStyle: {
+                            "color": "#4F4F4F",
+                            "cursor": "pointer",
+                            "fontSize": "12px",
+                            "lineHeight": '15px',
+                            "fontWeight": "bold",
+                        },
+                },
+                xAxis: {
+                    labels:{
+                        enabled: false,
+                        style: {
+                            borderWidth: 0,
+                        }
+                    }
+                },
+                yAxis: {
+                    reversed: true,
+                    labels: {
+                        enabled: false,
+                        style: {
+                            borderWidth: 0
+                        }
+                    },
+                    title: {
+                        enabled: false,
+                    },
+                },
+                tooltip: {
+                    headerFormat: null,
+                    pointFormat:'{series.name} ({point.y} מכירות)',
+                    style: {
+                        "color": "#4F4F4F",
+                        "fontSize": "12px",
+                        "lineHeight": '15px',
+                    },
+                    shadow: {
+                        color: "rgba(0, 0, 0, 0.25)",
+                        offset: 0,
+                        spread: 2,
+                        blur: 2,
+                    },
+                    borderRadius: 8,
+                },
+                plotOptions: {
+                    bar: {
+                        grouping: false,
+                        borderRadius: 0,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            "color": "#4F4F4F",
+                            "cursor": "pointer",
+                            "fontSize": "12px",
+                            "lineHeight": '15px',
+                            "fontWeight": "bold",
+                        }
+                    },
+                    series: {
+                        states: {
+                            inactive: {
+                                opacity: 1
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'מחלקה 1',
+                    color: '#F8C1C0',
+                    data: [{name: 'מחלקה 1', y: 18, x: 0}],
+                }, {
+                    name: 'מחלקה 2',
+                    color: '#FF4544',
+                    data: [{name: 'מחלקה 2', y: 15, x: 1}]
+                }, {
+                    name: 'מחלקה 3',
+                    color: '#000000', 
+                    data: [{name: 'מחלקה 3', y: 9, x: 2}]
+                }, {
+                    name: 'מחלקה 4',
+                    color: '#C4C4C4', 
+                    data: [{name: 'מחלקה 4', y: 6, x: 3}]
+                }, {
+                    name: 'מחלקה 5',
+                    color: '#E8E8E8', 
+                    data: [{name: 'מחלקה 5', y: 4, x: 4}]
+                }]
+            });
+        })();
+    </script>
+    <script>
+        (function($){
+            $(window).on("load",function(){
+                $(".d-pop-tabs-content").mCustomScrollbar();
+            });
+        })(jQuery);
+    </script>
+</body>
+
+</html>
