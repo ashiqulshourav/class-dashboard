@@ -21,64 +21,12 @@
                     <div class="d-header-inner flex-wrap justify-between align-center">
                         <div class="d-title">הדשבורד שלי <span class="d-title-btn"><img src="./assets/images/hamburger-menu.svg" alt=""></span></div>
                         <div class="d-h-dropdown">
-                            <select name="d-h-select" id="dHSelect">
+                            <span class="d-h-select" id="dHSelect">מטי - סניף מעלה אדומים</span>
+                            <!-- <select name="d-h-select" id="dHSelect">
                                 <option value="mati">מטי - סניף מעלה אדומים</option>
                                 <option value="mati">מטי - סניף מעלה אדומים</option>
-                            </select>
+                            </select> -->
                         </div>
-                        <div class="d-h-dropdown pop-dropdown" style="display: none;">
-                            <div class="pop-dropdown-inner">
-                                <span class="d-h-dropdown-text">על מה תרצו להסתכל?</span>
-                                <div class="d-h-dropdown-list-p">
-                                    <div class="d-h-dropdown-list mCustomScrollbar">
-                                        <ul>
-                                            <li>מטי - כל הסניפים</li>
-                                            <li class="active">מטי - סניף מלחה</li>
-                                            <li>מטי - סניף מעלה אדומים</li>
-                                            <li>מטי - סניף קניון הדר</li>
-                                            <li>מטי - סניף רמות</li>
-                                            <li>מטי - סניף בית שמש</li>
-                                            <li>מטי - סניף מעלה אדומים</li>
-                                            <li>מטי - סניף קניון הדר</li>
-                                            <li>מטי - סניף רמות</li>
-                                            <li>מטי - סניף בית שמש</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <script>
-                            const dropdown = document.querySelector('.d-h-dropdown-text');
-                            const items = dropdown.parentElement.querySelectorAll('ul li');
-                            dropdown.addEventListener('click', function(){
-                                const parent = this.closest('.pop-dropdown');
-
-                                //remove selected class for all items
-                                if(!parent.classList.contains('active')){
-                                    parent.querySelectorAll('ul li').forEach((item)=>{
-                                        item.classList.remove('selected');
-                                    })
-                                };
-                                // add active class to the parent
-                                parent.classList.toggle('active');
-                            });
-
-                            // add selected & active class 
-                            items.forEach((item)=>{
-                                item.addEventListener('click', function(){
-                                    if(!item.classList.contains('selected')){
-                                        //remove active & selected class when item clicked
-                                        item.parentElement.querySelectorAll('li').forEach((item)=>{
-                                            item.classList.remove('active', 'selected');
-                                        })
-                                        // add active class on click
-                                        item.classList.add('active', 'selected');
-                                    }else{
-                                        item.classList.remove('active', 'selected');
-                                    }
-                                });
-                            });
-                        </script>
                         <div class="d-mobile">
                             <div class="d-tabs">
                                 <div class="d-tabs-inner flex-nowrap">
@@ -635,6 +583,71 @@
         </div>
     </div>
 
+    <div class="d-popup d-pop-drp" id="dPopDrp">
+        <div class="d-pop-dropdown pop-dropdown active">
+            <div class="pop-dropdown-inner">
+                <span class="d-h-dropdown-text">על מה תרצו להסתכל?</span>
+                <div class="d-h-dropdown-list-p">
+                    <div class="d-h-dropdown-list mCustomScrollbar">
+                        <ul>
+                            <li>מטי - כל הסניפים</li>
+                            <li class="active">מטי - סניף מלחה</li>
+                            <li>מטי - סניף מעלה אדומים</li>
+                            <li>מטי - סניף קניון הדר</li>
+                            <li>מטי - סניף רמות</li>
+                            <li>מטי - סניף בית שמש</li>
+                            <li>מטי - סניף מעלה אדומים</li>
+                            <li>מטי - סניף קניון הדר</li>
+                            <li>מטי - סניף רמות</li>
+                            <li>מטי - סניף בית שמש</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        document.querySelector('#dHSelect').addEventListener('click', function(){
+            document.querySelector('#dPopDrp').classList.add('active');
+        });
+
+        const dropdown = document.querySelector('.d-h-dropdown-text');
+        const items = dropdown.parentElement.querySelectorAll('ul li');
+        dropdown.addEventListener('click', function(){
+            const parent = this.closest('.pop-dropdown');
+
+            //remove selected class for all items
+            if(!parent.classList.contains('active')){
+                parent.querySelectorAll('ul li').forEach((item)=>{
+                    item.classList.remove('selected');
+                })
+            };
+            // add active class to the parent
+            parent.parentElement.classList.toggle('active');
+        });
+
+        // add selected & active class 
+        items.forEach((item)=>{
+            item.addEventListener('click', function(){
+                if(!item.classList.contains('selected')){
+                    //remove active & selected class when item clicked
+                    item.parentElement.querySelectorAll('li').forEach((item)=>{
+                        item.classList.remove('active', 'selected');
+                    })
+                    // add active class on click
+                    item.classList.add('active', 'selected');
+                }else{
+                    item.classList.remove('active', 'selected');
+                }
+            });
+        });
+    </script>
+
+
+    
+
     <!-- remove popup -->
     <script>
         const popBtns = document.querySelectorAll('.d-item-h-btn');
@@ -653,7 +666,7 @@
         });
 
         document.addEventListener('click', function(e){
-            if(!e.target.closest('.d-popup-inner') && (!e.target.closest('.d-item-h-btn'))){
+            if(!e.target.closest('.d-popup-inner') && !e.target.closest('.d-pop-dropdown') && (!e.target.closest('.d-item-h-btn')) && (!e.target.closest('.d-h-dropdown'))){
                 removePopup();
             }
         });
@@ -1021,10 +1034,12 @@
                 scrollablePlotArea: {
                     minWidth: 600,
                 },
+                events: {
+      scroll: function () {
+        console.log('Hello scroll');
+      }
+    }
             },
-            // scrollbar: {
-            //     alwaysVisible: true
-            // },
             exporting:{
                 enabled: true,
             },
@@ -1080,7 +1095,7 @@
                         fontSize: '12px',
                         shadow: false,
                     },
-                }
+                },
             },
             colors: ['#80D1CB', '#00A699'],
             legend: {
